@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-//Data可能會錯
+//user資料表欄位的類別
 @Data
 @Entity
 public class User implements Serializable{

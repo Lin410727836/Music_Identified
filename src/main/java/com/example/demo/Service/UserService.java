@@ -10,13 +10,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+//中介類別，做UserRepository邏輯的封裝
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
 
-
+    //利用API傳進來的帳號資料，比對資料庫有無此帳號，有此帳號拋出UserConflictException例外
     public User createUser(User user) {
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
 
@@ -31,7 +32,7 @@ public class UserService {
     public User getUserByName(String username) {
 
         return  userRepository.findByUsername(username).orElseThrow
-                (() -> new UserNotFoundException("Can't find the "+username));
+                (() -> new UserNotFoundException("Can't find "+username));
     }
 
 //    public User getUser() {
